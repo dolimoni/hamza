@@ -1,0 +1,122 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>choisir l'image</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="container">
+    <h2>image produit</h2>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">choisi une image</button>
+  <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog"></div>
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body col-lg-12">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">CHARGER PHOTO</h4>
+
+
+                <div class="row">
+
+                    <div class=" col-lg-4 ">
+                        <div class="thumbnail">
+                            <img src="desert.jpg" data-name="desert.jpg"/>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 ">
+                        <div class="thumbnail">
+                            <img src="petit%20dejeuner.jpg" data-name="petit%20dejeuner.jpg" />
+                        </div>
+                    </div>
+
+
+                    <div class=" col-lg-4 ">
+                        <div class="thumbnail">
+                            <img src="image2.JPG" data-name="image2.JPG" />
+                        </div>
+                    </div>
+
+
+                    <div class=" col-lg-4 ">
+                        <div class="thumbnail">
+                            <img src="images.jpg" data-name="images.jpg"/>
+                        </div>
+                    </div>
+
+
+                    <div class=" col-lg-4 ">
+                        <div class="thumbnail">
+                            <img src="petit pain white.jpg" data-name="petit pain white.jpg" />
+                        </div>
+                    </div>
+
+                    <div class=" col-lg-4 ">
+                        <div class="thumbnail">
+                            <img src="Petits pains au chocolat facile.jpg"  data-name="Petits pains au chocolat facile.jpg" />
+                        </div>
+                    </div>
+
+                    <div class=" col-lg-4 ">
+                        <div class="thumbnail">
+                            <img src="pizza.jpg" data-name="pizza.jpg" id="pizza"/>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">fermer</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">ok</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script>
+    $(document).ready(function(){
+        $("img").click(function(){
+
+    var name= $(this).attr("data-name");
+        alert(name);
+
+        var data={"name": name};
+        $.ajax({
+            url: 'sauvgardeimg.php',
+            type: 'post',
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            data: data,
+            success: function (data) {
+                alert(data.lien);
+            },
+
+            error: function (resultat, statut, erreur) {
+
+                alert(statut);
+            }
+    });
+    });
+    });
+
+</script>
+
+</body>
+</html>
+
